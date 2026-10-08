@@ -28,7 +28,8 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 
 .skip-link { position: fixed; z-index: 20; top: .75rem; left: .75rem; padding: .8rem 1rem; transform: translateY(-160%); border-radius: 999px; background: white; color: var(--ink); font-weight: 700; }
 .skip-link:focus { transform: translateY(0); }
-.site-header { position: relative; z-index: 10; display: flex; min-height: 5.8rem; align-items: center; justify-content: space-between; padding: 0 var(--page-gutter); background: var(--paper); }
+.site-header { position: sticky; z-index: 10; top: 0; display: flex; min-height: 5.8rem; align-items: center; justify-content: space-between; padding: 0 var(--page-gutter); background: var(--paper); transition: top .25s ease, margin .25s ease, border-radius .25s ease, box-shadow .25s ease, background-color .25s ease; }
+.site-header.is-floating { top: .75rem; margin: .75rem clamp(.75rem, 2.5vw, 2rem) -.75rem; border: 1px solid var(--line); border-radius: 99px; background: rgba(246, 248, 246, .94); box-shadow: 0 .6rem 2rem rgba(21, 55, 61, .14); }
 .brand { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; }
 .brand-mark { display: grid; width: 2.45rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--lagoon); color: white; }
 .brand-mark svg { width: 1.55rem; height: 1.05rem; }
@@ -51,7 +52,7 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 h1, h2, h3, p, figure { margin-top: 0; }
 h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.055em; }
 h1, h2, h3 { text-wrap: balance; }
-section[id] { scroll-margin-top: 0; }
+section[id] { scroll-margin-top: 6.5rem; }
 section[id]:target.section-shell { padding-top: clamp(2rem, 4vw, 3rem); }
 .hero h1 { max-width: 14ch; margin: 1.45rem auto 1.25rem; font-size: clamp(4rem, 7.2vw, 7.2rem); line-height: .98; }
 h1 em, h2 em { color: var(--lagoon-deep); font-weight: 400; }
@@ -172,6 +173,8 @@ h1 em, h2 em { color: var(--lagoon-deep); font-weight: 400; }
 @media (max-width: 680px) {
   :root { --page-gutter: 1.25rem; }
   .site-header { min-height: 4.75rem; }
+  .site-header.is-floating { top: .5rem; margin: .5rem .6rem -.5rem; padding: 0 1rem; }
+  body.menu-open .site-header.is-floating { border-radius: 0; }
   .brand-mark { width: 2.15rem; }
   .brand-name { font-size: 1.45rem; }
   .menu-toggle { position: relative; z-index: 12; display: grid; width: 2.7rem; height: 2.7rem; align-content: center; justify-items: center; gap: .36rem; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; }

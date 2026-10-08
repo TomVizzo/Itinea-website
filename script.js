@@ -67,6 +67,18 @@ if ("IntersectionObserver" in window && !prefersReducedMotion) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
+document.querySelectorAll('a[href="#inicio"]').forEach((link) => link.addEventListener("click", (event) => {
+  event.preventDefault();
+  closeMenu();
+  window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+  history.replaceState(null, "", "#inicio");
+}));
+
+const siteHeader =document.querySelector(".site-header");
+const updateHeader = () => siteHeader?.classList.toggle("is-floating", window.scrollY > 24);
+updateHeader();
+window.addEventListener("scroll", updateHeader, { passive: true });
+
 window.addEventListener("resize", () => {
   if (window.innerWidth > 680) closeMenu();
 }, { passive: true });
