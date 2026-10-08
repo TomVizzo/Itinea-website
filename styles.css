@@ -17,7 +17,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
 body.menu-open { overflow: hidden; }
 img, svg { display: block; }
@@ -31,7 +31,7 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .site-header { position: relative; z-index: 10; display: flex; min-height: 5.8rem; align-items: center; justify-content: space-between; padding: 0 var(--page-gutter); background: var(--paper); }
 .brand { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; }
 .brand-mark { display: grid; width: 2.45rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--lagoon); color: white; }
-.brand-mark svg { width: 1.45rem; transform: rotate(-8deg); }
+.brand-mark svg { width: 1.55rem; height: 1.05rem; }
 .brand-name { display: flex; align-items: baseline; gap: .28rem; font-family: var(--serif); font-size: 1.62rem; letter-spacing: -.065em; }
 .brand-name span { color: var(--lagoon-deep); font-family: var(--sans); font-size: .69rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .primary-navigation { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 3.4rem); }
@@ -49,7 +49,8 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 h1, h2, h3, p, figure { margin-top: 0; }
 h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.055em; }
 h1, h2, h3 { text-wrap: balance; }
-section[id] { scroll-margin-top: 1rem; }
+section[id] { scroll-margin-top: 0; }
+section[id]:target.section-shell { padding-top: clamp(2rem, 4vw, 3rem); }
 .hero h1 { max-width: 14ch; margin: 1.55rem 0 1.3rem; font-size: clamp(3.35rem, 5.4vw, 5.9rem); line-height: 1.04; }
 h1 em, h2 em { color: var(--lagoon-deep); font-weight: 400; }
 .hero-description { max-width: 26rem; margin-bottom: 1.85rem; color: var(--ink-soft); font-size: clamp(1rem, 1.25vw, 1.15rem); line-height: 1.65; }
@@ -113,7 +114,7 @@ h1 em, h2 em { color: var(--lagoon-deep); font-weight: 400; }
 .closing-orbit span:nth-child(3) { inset: 22%; }
 .closing .eyebrow, .closing h2, .closing > p:not(.eyebrow), .button-closing, .closing-plane { position: relative; z-index: 1; }
 .closing-plane { position: absolute; right: 15%; bottom: 15%; display: grid; width: 3.3rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--lagoon); color: white; transform: rotate(-24deg); }
-.closing-plane svg { width: 1.7rem; }
+.closing-plane svg { width: 1.7rem; height: 1.15rem; }
 .site-footer { display: grid; min-height: 8rem; grid-template-columns: 1fr 1fr 2fr; align-items: center; gap: 1.5rem; padding: 1.5rem var(--page-gutter); background: var(--paper); }
 .site-footer > p { margin: 0; color: var(--ink-soft); font-family: var(--serif); font-size: 1.05rem; font-style: italic; }
 .footer-meta { display: flex; align-items: center; justify-content: flex-end; gap: clamp(1rem, 2.5vw, 2.5rem); color: var(--ink-soft); font-size: .63rem; }
@@ -143,7 +144,6 @@ h1 em, h2 em { color: var(--lagoon-deep); font-weight: 400; }
 
 @media (max-width: 680px) {
   :root { --page-gutter: 1.25rem; }
-  html { scroll-padding-top: 1.5rem; }
   .site-header { min-height: 4.75rem; }
   .brand-mark { width: 2.15rem; }
   .brand-name { font-size: 1.45rem; }
@@ -170,8 +170,9 @@ h1 em, h2 em { color: var(--lagoon-deep); font-weight: 400; }
   .hero-visual > img { object-position: 62% center; }
   .hero-stamp { top: 1.1rem; right: 1.2rem; width: 4.7rem; font-size: .4rem; }
   .image-note { right: var(--page-gutter); font-size: .62rem; }
-  .hero-stamp svg { width: 1.45rem; }
+  .hero-stamp svg { width: 1.45rem; height: 1rem; }
   .section-shell { padding-top: 5rem; padding-bottom: 5rem; }
+  section[id]:target.section-shell { padding-top: 2rem; }
   .philosophy-grid { grid-template-columns: 1fr; gap: 1.6rem; margin: 2rem 0 2.7rem; }
   .philosophy h2, .process h2 { font-size: clamp(3.15rem, 14vw, 4.5rem); }
   .philosophy-copy .lead-copy { font-size: 1.45rem; }
@@ -204,3 +205,4 @@ h1 em, h2 em { color: var(--lagoon-deep); font-weight: 400; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .has-js [data-reveal] { opacity: 1; transform: none; }
 }
+
